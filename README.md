@@ -1,4 +1,4 @@
-TestCoin (PIG)
+TestCoin (TST)
 ===========
 
 TESTCOIN, your first cryptocurrency. Oink!

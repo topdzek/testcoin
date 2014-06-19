@@ -30,11 +30,11 @@ AskPassphraseDialog::AskPassphraseDialog(Mode mode, QWidget *parent) :
         case Encrypt: // Ask passphrase x2
             ui->passLabel1->hide();
             ui->passEdit1->hide();
-            ui->warningLabel->setText(tr("Enter the new passphrase to the PiggyBank.<br/>Please use a passphrase of <b>10 or more random characters</b>, or <b>eight or more words</b>."));
-            setWindowTitle(tr("Encrypt PiggyBank"));
+            ui->warningLabel->setText(tr("Enter the new passphrase to the TestBank.<br/>Please use a passphrase of <b>10 or more random characters</b>, or <b>eight or more words</b>."));
+            setWindowTitle(tr("Encrypt TestBank"));
             break;
         case Unlock: // Ask passphrase
-            ui->warningLabel->setText(tr("This operation needs your PiggyBank passphrase to unlock the PiggyBank."));
+            ui->warningLabel->setText(tr("This operation needs your TestBank passphrase to unlock the TestBank."));
             ui->passLabel2->hide();
             ui->passEdit2->hide();
             ui->passLabel3->hide();
@@ -42,7 +42,7 @@ AskPassphraseDialog::AskPassphraseDialog(Mode mode, QWidget *parent) :
             setWindowTitle(tr("Unlock wallet"));
             break;
         case Decrypt:   // Ask passphrase
-            ui->warningLabel->setText(tr("This operation needs your wallet passphrase to decrypt the PiggyBank."));
+            ui->warningLabel->setText(tr("This operation needs your wallet passphrase to decrypt the TestBank."));
             ui->passLabel2->hide();
             ui->passEdit2->hide();
             ui->passLabel3->hide();
@@ -51,7 +51,7 @@ AskPassphraseDialog::AskPassphraseDialog(Mode mode, QWidget *parent) :
             break;
         case ChangePass: // Ask old passphrase + new passphrase x2
             setWindowTitle(tr("Change passphrase"));
-            ui->warningLabel->setText(tr("Enter the old and new passphrase to the PiggyBank."));
+            ui->warningLabel->setText(tr("Enter the old and new passphrase to the TestBank."));
             break;
     }
 
@@ -97,8 +97,8 @@ void AskPassphraseDialog::accept()
             // Cannot encrypt with empty passphrase
             break;
         }
-        QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm PiggyBank encryption"),
-                 tr("WARNING: If you encrypt your PiggyBank and lose your passphrase, you will <b>LOSE ALL OF YOUR testcoinS</b>!\nAre you sure you wish to encrypt your PiggyBank?"),
+        QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm TestBank encryption"),
+                 tr("WARNING: If you encrypt your TestBank and lose your passphrase, you will <b>LOSE ALL OF YOUR testcoinS</b>!\nAre you sure you wish to encrypt your TestBank?"),
                  QMessageBox::Yes|QMessageBox::Cancel,
                  QMessageBox::Cancel);
         if(retval == QMessageBox::Yes)
@@ -107,20 +107,20 @@ void AskPassphraseDialog::accept()
             {
                 if(model->setWalletEncrypted(true, newpass1))
                 {
-                    QMessageBox::warning(this, tr("PiggyBank encrypted"),
-                                         tr("TestCoin will close now to finish the encryption process. Remember that encrypting your PiggyBank cannot fully protect your testcoin from being stolen by malware infecting your computer."));
+                    QMessageBox::warning(this, tr("TestBank encrypted"),
+                                         tr("TestCoin will close now to finish the encryption process. Remember that encrypting your TestBank cannot fully protect your testcoin from being stolen by malware infecting your computer."));
                     QApplication::quit();
                 }
                 else
                 {
-                    QMessageBox::critical(this, tr("PiggyBank encryption failed"),
-                                         tr("PiggyBank encryption failed due to an internal error. Your PiggyBank was not encrypted."));
+                    QMessageBox::critical(this, tr("TestBank encryption failed"),
+                                         tr("TestBank encryption failed due to an internal error. Your TestBank was not encrypted."));
                 }
                 QDialog::accept(); // Success
             }
             else
             {
-                QMessageBox::critical(this, tr("PiggyBank encryption failed"),
+                QMessageBox::critical(this, tr("TestBank encryption failed"),
                                      tr("The supplied passphrases do not match."));
             }
         }
@@ -132,7 +132,7 @@ void AskPassphraseDialog::accept()
     case Unlock:
         if(!model->setWalletLocked(false, oldpass))
         {
-            QMessageBox::critical(this, tr("PiggyBank unlock failed"),
+            QMessageBox::critical(this, tr("TestBank unlock failed"),
                                   tr("The passphrase entered for the wallet decryption was incorrect."));
         }
         else
@@ -143,7 +143,7 @@ void AskPassphraseDialog::accept()
     case Decrypt:
         if(!model->setWalletEncrypted(false, oldpass))
         {
-            QMessageBox::critical(this, tr("PiggyBank decryption failed"),
+            QMessageBox::critical(this, tr("TestBank decryption failed"),
                                   tr("The passphrase entered for the wallet decryption was incorrect."));
         }
         else
@@ -156,19 +156,19 @@ void AskPassphraseDialog::accept()
         {
             if(model->changePassphrase(oldpass, newpass1))
             {
-                QMessageBox::information(this, tr("PiggyBank encrypted"),
-                                     tr("PiggyBank passphrase was successfully changed."));
+                QMessageBox::information(this, tr("TestBank encrypted"),
+                                     tr("TestBank passphrase was successfully changed."));
                 QDialog::accept(); // Success
             }
             else
             {
-                QMessageBox::critical(this, tr("PiggyBank encryption failed"),
-                                     tr("The passphrase entered for the PiggyBank decryption was incorrect."));
+                QMessageBox::critical(this, tr("TestBank encryption failed"),
+                                     tr("The passphrase entered for the TestBank decryption was incorrect."));
             }
         }
         else
         {
-            QMessageBox::critical(this, tr("PiggyBank encryption failed"),
+            QMessageBox::critical(this, tr("TestBank encryption failed"),
                                  tr("The supplied passphrases do not match."));
         }
         break;

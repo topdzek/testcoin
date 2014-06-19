@@ -98,7 +98,7 @@ void EditAddressDialog::accept()
             return;
         case AddressTableModel::WALLET_UNLOCK_FAILURE:
             QMessageBox::critical(this, windowTitle(),
-                tr("Could not unlock PiggyBank."),
+                tr("Could not unlock TestBank."),
                 QMessageBox::Ok, QMessageBox::Ok);
             return;
         case AddressTableModel::KEY_GENERATION_FAILURE:
