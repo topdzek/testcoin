@@ -1,10 +1,10 @@
-PiggyCoin (PIG)
+TestCoin (PIG)
 ===========
 
-PIGGYCOIN, your first cryptocurrency. Oink!
+TESTCOIN, your first cryptocurrency. Oink!
 
-<img src='http://i.imgur.com/0o2ee7p.png'>
+<img src='http://i.imgur.com/0ZXku0B.png'>
 
-website: http://piggy-coin.com
+website: http://test-coin.com
 
 btc talk thread: https://bitcointalk.org/index.php?topic=487017

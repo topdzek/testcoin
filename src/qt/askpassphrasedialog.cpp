@@ -98,7 +98,7 @@ void AskPassphraseDialog::accept()
             break;
         }
         QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm PiggyBank encryption"),
-                 tr("WARNING: If you encrypt your PiggyBank and lose your passphrase, you will <b>LOSE ALL OF YOUR piggycoinS</b>!\nAre you sure you wish to encrypt your PiggyBank?"),
+                 tr("WARNING: If you encrypt your PiggyBank and lose your passphrase, you will <b>LOSE ALL OF YOUR testcoinS</b>!\nAre you sure you wish to encrypt your PiggyBank?"),
                  QMessageBox::Yes|QMessageBox::Cancel,
                  QMessageBox::Cancel);
         if(retval == QMessageBox::Yes)
@@ -108,7 +108,7 @@ void AskPassphraseDialog::accept()
                 if(model->setWalletEncrypted(true, newpass1))
                 {
                     QMessageBox::warning(this, tr("PiggyBank encrypted"),
-                                         tr("PiggyCoin will close now to finish the encryption process. Remember that encrypting your PiggyBank cannot fully protect your piggycoin from being stolen by malware infecting your computer."));
+                                         tr("TestCoin will close now to finish the encryption process. Remember that encrypting your PiggyBank cannot fully protect your testcoin from being stolen by malware infecting your computer."));
                     QApplication::quit();
                 }
                 else
